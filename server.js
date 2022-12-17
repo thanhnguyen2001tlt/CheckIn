@@ -12,26 +12,72 @@ wifi.init({
 });
 
 //get mac
-function getmac(){
+function getmac() {
   var mac;
   address.mac(function (err, m) {
-      mac =m;
+    mac = m;
   });
   return mac;
 }
-//check
-function checkin(ssiddb, macdb, wfh) {
-  var check = 1;
-  wifi.getCurrentConnections((error, currentConnections) => {
-    var ssid = currentConnections[0].ssid;
-    if (ssiddb === ssid && macdb == getmac()) {
-          check = 0;
-        }
+//checkin
+const UserCheck = require("./model/checkin")
+async function checkin(ssiddb, macdb) {
+  try {
+    let today = new Date();
+    const data = await wifi.getCurrentConnections();
+    if (ssiddb === data[0].ssid && macdb === getmac()) {
+      const checkPut = {
+        typecheckin: "cty",
+        datetime:  today.toLocaleString('en-UK'),
+      }
+      const userc = new UserCheck(checkPut);
+      userc.save((err, data) => {
+        console.log(data)
       });
-  return check;
+    } else if (ssiddb !== data[0].ssid) {
+      const checkPut = {
+        typecheckin: "wfh",
+        datetime:  today.toLocaleString('en-UK'),
+      }
+      const userc = new UserCheck(checkPut);
+      userc.save((err, data) => {
+        console.log(data)
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+//checkout
+const UserCheckOut = require("./model/checkout")
+async function checkout(ssiddb, macdb) {
+  try {
+    let today = new Date();
+    const data = await wifi.getCurrentConnections();
+    if (ssiddb === data[0].ssid && macdb === getmac()) {
+      const checkPut = {
+        typecheckout: "cty",
+        datetime: toda.toLocaleString('en-UK'),
+      }
+      const userc = new UserCheckOut(checkPut);
+      userc.save((err, data) => {
+        console.log(data)
+      });
+    } else if (ssiddb !== data[0].ssid) {
+      const checkPut = {
+        typecheckout: "wfh",
+        datetime: today.toLocaleString('en-UK'),
+      }
+      const userc = new UserCheckOut(checkPut);
+      userc.save((err, data) => {
+        console.log(data)
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-console.log(checkin("MADIAD - LIVETRADE ", "60:6d:c7:ef:cc:a7", 1));
-console.log(getmac());
+checkin("MADIAD - LIVETRADE", "60:6d:c7:ef:cc:7")
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
