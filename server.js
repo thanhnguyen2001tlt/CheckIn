@@ -8,5 +8,16 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, }).then(
 app.use("/api/check", require("./router/checkin"));
 app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
+const os = require('os');
+
+const interfaces = os.networkInterfaces();
+for (const name of Object.keys(interfaces)) {
+  for (const interface of interfaces[name]) {
+    console.log(`Interface: ${name}`);
+    console.log(`   MAC address: ${interface.mac}`);
+  }
+}
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
+
