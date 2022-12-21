@@ -8,17 +8,9 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, }).then(
 app.use("/api/check", require("./router/checkin"));
 app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
-app.use("/api/check", require("./router/getwifi"));
-const address = require('address');
- //get mac
- function getmac() {
-    var mac;
-    address.mac(function (err, m) {
-        mac = m;
-    });
-    return mac;
-}
-console.log(getmac())
+
+
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
 
