@@ -8,7 +8,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, }).then(
 app.use("/api/check", require("./router/checkin"));
 app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
-
+app.use("/api/check", require("./router/getwifi"));
 
 
 const PORT = process.env.PORT || 8080;
