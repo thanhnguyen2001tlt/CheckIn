@@ -8,11 +8,8 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, }).then(
 app.use("/api/check", require("./router/checkin"));
 app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
-app.use("/api/check", require("./router/getwifi"));
-var detectSSid = require('detect-ssid');
-detectSSid(function(error, ssidname) {
-    console.log(ssidname);
-});
+
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
