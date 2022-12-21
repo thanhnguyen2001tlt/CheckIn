@@ -1,6 +1,6 @@
 const express = require('express');
 const getWifissid = express.Router();
-getWifissid.post("/getmac", async (req, res) => {
+getWifissid.post("/getwifi", async (req, res) => {
     const {} = req.body;
     //get mac
     function getssid() {
@@ -15,7 +15,7 @@ getWifissid.post("/getmac", async (req, res) => {
         })
     } else {
         return res.status(200).json({
-            message: "Lấy MAC Thiết Bị Thành Công",
+            message: "Lấy ssid Thiết Bị Thành Công",
             status: true,
         })
     }
