@@ -8,9 +8,21 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, }).then(
 app.use("/api/check", require("./router/checkin"));
 app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
-app.use("/api/check", require("./router/getwifi"));
 
+var Traceroute = require('traceroute-lite');
+var traceroute = new Traceroute('madiad.ddns.net');
+ 
+function checkwifi (){
+  traceroute.on('hop', function(hop) {
+    hop 
+  });
 
+  traceroute.start(function(err, hops) {
+    console.log(hops)
+  });
+  
+}
+checkwifi();
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
 
