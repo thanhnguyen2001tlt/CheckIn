@@ -1,6 +1,6 @@
 const express = require('express');
-var Traceroute = require('traceroute-lite');
-var traceroute = new Traceroute('madiad.ddns.net');
+// var Traceroute = require('traceroute-lite');
+// var traceroute = new Traceroute('madiad.ddns.net');
 const getWifissid = express.Router();
 getWifissid.post("/getwifi", async (req, res) => {
     const { } = req.body;
