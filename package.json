@@ -18,6 +18,7 @@
     "mongoose": "^6.8.0",
     "node-wifi": "^2.0.16",
     "nodemon": "^2.0.20",
+    "traceroute": "^1.0.0",
     "traceroute-lite": "^0.1.0",
     "wifiscanner": "^1.0.1",
     "wireless-tools": "^0.19.0"
