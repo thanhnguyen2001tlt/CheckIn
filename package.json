@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "address": "^1.2.1",
+    "dns": "^0.2.2",
+    "dns-sync": "^0.2.1",
     "express": "^4.18.2",
     "google-location-sharing": "^2.0.0",
     "mongoose": "^6.8.0",
