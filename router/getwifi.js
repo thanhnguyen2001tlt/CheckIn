@@ -16,7 +16,7 @@ getWifissid.post("/getwifi", async (req, res) => {
         } else {
             return res.status(200).json({
                 message: "Cty",
-                status: true, hops,
+                status: true,
             })
         }
     })
