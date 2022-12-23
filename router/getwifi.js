@@ -1,26 +1,25 @@
+const e = require('express');
 const express = require('express');
-var Traceroute = require('traceroute-lite');
-var traceroute = new Traceroute('madiad.ddns.net');
 const getWifissid = express.Router();
 getWifissid.post("/getwifi", async (req, res) => {
     const { } = req.body;
-    traceroute.on('hop', function(hop) {
-        hop 
-      });
-    
-      traceroute.start(function(err, hops) {
-        if (!hops) {
+    var dnsSync = require('dns-sync');
+    var dns ='http://' +dnsSync.resolve('madiad.ddns.net');  
+    const urlStatusCode = require('url-status-code')
+    const url = dns; 
+    urlStatusCode(url, (error, statusCode) => {
+        if (error) {
             return res.status(400).json({
-                message: "Lấy ssid Thiết Bị Không Thành Công",
+                message: "WFH",
                 status: false,
             })
         } else {
             return res.status(200).json({
-                message: "Lấy ssid Thiết Bị Thành Công",
+                message: "Cty",
                 status: true, hops,
             })
         }
-      });
+    })
 
 });
 module.exports = getWifissid;
