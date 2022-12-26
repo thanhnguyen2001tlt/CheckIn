@@ -14,6 +14,7 @@ getWifissid.post("/getwifi", async (req, res) => {
         data += chunk;
       });
       response.on('end', () => {
+       const ipar =JSON.parse(data).ip;
         if (JSON.parse(data).ip !== dns) {
             return res.status(400).json({
                 message: "WFH",
@@ -22,7 +23,7 @@ getWifissid.post("/getwifi", async (req, res) => {
         } else {
             return res.status(200).json({
                 message: "Cty",
-                status: true,
+                status: true,ipar,
             })
         }
       });
