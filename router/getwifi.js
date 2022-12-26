@@ -7,7 +7,7 @@ getWifissid.post("/getwifi", async (req, res) => {
     var dns ="113.188.141.192" ;
     const https = require('https');
 
-    https.get('https://ipinfo.io/', (response) => {
+    https.get('https://jsonip.com/?callback=', (response) => {
       let data = '';
       // Nhận dữ liệu từ response
       response.on('data', (chunk) => {
