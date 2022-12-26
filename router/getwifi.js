@@ -4,11 +4,17 @@ const getWifissid = express.Router();
 getWifissid.post("/getwifi", async (req, res) => {
     const { } = req.body;
     var dnsSync = require('dns-sync');
-    var dns ='http://' +dnsSync.resolve('madiad.ddns.net');  
-    const urlStatusCode = require('url-status-code')
-    const url = dns; 
-    urlStatusCode(url, (error, statusCode) => {
-        if (error) {
+    var dns ="113.188.141.192" ;
+    const https = require('https');
+
+    https.get('https://ipinfo.io/', (response) => {
+      let data = '';
+      // Nhận dữ liệu từ response
+      response.on('data', (chunk) => {
+        data += chunk;
+      });
+      response.on('end', () => {
+        if (JSON.parse(data).ip !== dns) {
             return res.status(400).json({
                 message: "WFH",
                 status: false,
@@ -19,7 +25,7 @@ getWifissid.post("/getwifi", async (req, res) => {
                 status: true,
             })
         }
-    })
-
+      });
+    });
 });
 module.exports = getWifissid;
