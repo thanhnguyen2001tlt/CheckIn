@@ -28,6 +28,5 @@ getWifissid.post("/getwifi", async (req, res) => {
         }
       });
     });
-
 });
 module.exports = getWifissid;
