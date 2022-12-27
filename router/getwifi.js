@@ -19,12 +19,12 @@ getWifissid.post("/getwifi", async (req, res) => {
         if (JSON.parse(data).ip !== dns) {
             return res.status(400).json({
                 message: "WFH",
-                status: false,ipar,ips,
+                status: false,ips,
             })
         } else {
             return res.status(200).json({
                 message: "Cty",
-                status: true,ipar,ips,
+                status: true,ips,
             })
         }
       });
