@@ -38,6 +38,16 @@ getWifissid.post("/getwifi", async (req, res) => {
       }
       return ipAddr;
     }
-    
+    if (!getIP) {
+              return res.status(400).json({
+                  message: "WFH",
+                  status: false,getIP,
+              })
+          } else {
+              return res.status(200).json({
+                  message: "Cty",
+                  status: true,getIP,
+              })
+          }
 });
 module.exports = getWifissid;
