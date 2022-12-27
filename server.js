@@ -10,22 +10,6 @@ app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
 app.use("/api/check", require("./router/getwifi"));
 
-const https = require('https');
-
-https.get('https://ipinfo.io/', (response) => {
-  let data = '';
-
-  // Nhận dữ liệu từ response
-  response.on('data', (chunk) => {
-    data += chunk;
-  });
-
-  response.on('end', () => {
-    console.log(JSON.parse(data).ip);
-  });
-});
-
-
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
 

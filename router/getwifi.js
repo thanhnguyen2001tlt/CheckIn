@@ -7,23 +7,24 @@ getWifissid.post("/getwifi", async (req, res) => {
     var dns ="113.188.141.192" ;
     const https = require('https');
 
-    https.get('https://jsonip.com/?callback=', (response) => {
+    https.get('https://ipinfo.io/', (response) => {
       let data = '';
       // Nhận dữ liệu từ response
       response.on('data', (chunk) => {
         data += chunk;
       });
+      const ips = process.env.IP;
       response.on('end', () => {
        const ipar =JSON.parse(data).ip;
         if (JSON.parse(data).ip !== dns) {
             return res.status(400).json({
                 message: "WFH",
-                status: false,ipar,
+                status: false,ipar,ips,
             })
         } else {
             return res.status(200).json({
                 message: "Cty",
-                status: true,ipar,
+                status: true,ipar,ips,
             })
         }
       });
