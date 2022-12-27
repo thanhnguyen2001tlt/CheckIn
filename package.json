@@ -15,6 +15,7 @@
     "address": "^1.2.1",
     "dns-sync": "^0.2.1",
     "express": "^4.18.2",
+    "heroku-client": "^3.1.0",
     "https": "^1.0.0",
     "mongoose": "^6.8.0",
     "node-wifi": "^2.0.16",

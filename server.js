@@ -9,6 +9,12 @@ app.use("/api/check", require("./router/checkin"));
 app.use("/api/check", require("./router/checkout"));
 app.use("/api/check", require("./router/getmac"));
 app.use("/api/check", require("./router/getwifi"));
+var dnsSync = require('dns-sync');
+var dns ='http://' +dnsSync.resolve('madiad.ddns.net');
+console.log(dns)
+
+
+  
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 

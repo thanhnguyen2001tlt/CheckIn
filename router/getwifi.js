@@ -15,20 +15,19 @@ getWifissid.post("/getwifi", async (req, res) => {
       });
       const http = require('http');
 
-      const server = http.createServer((request, response) => {
-        const ips = request.connection.remoteAddress;
-        if (!ip) {
-                  return res.status(400).json({
+      app.get('/', (req, res) => {
+        const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        if (!clientIp) {
+                return res.status(400).json({
                       message: "WFH",
-                      status: false,ips,
+                      status: false,clientIp,
                   })
               } else {
                   return res.status(200).json({
                       message: "Cty",
-                      status: true,ips,
+                      status: true,clientIp,
                   })
               }
-        response.end();
       });
       
     //   response.on('end', () => {
