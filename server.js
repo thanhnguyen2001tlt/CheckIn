@@ -11,11 +11,6 @@ app.use("/api/check", require("./router/getmac"));
 app.use("/api/check", require("./router/getwifi"));
 
 
-const find = require('local-devices');
-
-find().then(devices => {
-  console.log(devices)
-})
  
 const PORT = process.env.PORT || 8080;
 app.listen(PORT) 
